@@ -16,7 +16,7 @@
 using namespace std;
 typedef long long LL;
 
-typedef struct
+typedef struct   //抽象数据类型
 {
     char name[10];
     int num;
@@ -24,7 +24,7 @@ typedef struct
 } employee;
 
 
-class emplist
+class emplist   //线性表
 {
 public:
     virtual ~emplist();
@@ -51,7 +51,7 @@ emplist::~emplist()
     amt=0;
     listsize=0;
 }
-bool emplist::Init()
+bool emplist::Init()  //分配初始空间30
 {
     this->emp=(employee *)malloc(30*sizeof(employee));
     if (!this->emp) exit(OVERFLOW);
@@ -62,7 +62,7 @@ bool emplist::Init()
 bool emplist::Creat()
 {
     //cout<<amt<<listsize<<endl;
-    if (this->amt>=this->listsize)
+    if (this->amt>=this->listsize) //再分配10
     {
         employee *newemp=NULL;
         newemp=(employee *)realloc(this->emp,(this->listsize+10)*sizeof(employee));
