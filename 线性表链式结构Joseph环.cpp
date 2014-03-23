@@ -3,13 +3,9 @@
 #include <algorithm>
 #include <cstring>
 #include <cmath>
-#include <queue>
-#include <stack>
-#include <vector>
 #include <cstdlib>
 #include <string>
 #include <cstring>
-#include <map>
 #define eps 1e-9
 #define init 30;
 #define increse 10;
@@ -22,6 +18,7 @@ class Node  //节点
 public:
     Node();
     int data;
+    int pwd;
     Node *next;
     friend class Linklist;
 };
@@ -54,7 +51,7 @@ Node::Node()
 void Linklist::Create(Linklist & l)  //建表
 {
     int n;
-    cout<<"Plz Input The Number"<<endl;
+    cout<<"请输入人数"<<endl;
     cin>>n;
     Node * p;
     for (int i=n;i>0;i--)
@@ -62,6 +59,8 @@ void Linklist::Create(Linklist & l)  //建表
         p=new Node;
         p->data=i;
         p->next=l.head;
+        cout<<"请输入第"<<i<<"个人的m值"<<endl;
+        cin>>p->pwd;
         l.head=p;
     }
     while (p->next)
@@ -88,7 +87,7 @@ int main()
     int m;
     Linklist l;
     l.Create(l);
-    cout<<"Plz Input The Pos To Kick Out"<<endl;
+    cout<<"请输入初始的m值"<<endl;
     cin>>m;
     Node *p,*q,*r;
     p=l.head;
@@ -106,17 +105,21 @@ int main()
             q->next=p->next;
             l.head=p->next;
             p=l.head;
+            m=r->pwd;
         }
         else
         {
             r=p;
             q->next=p->next;
             p=p->next;
+            m=r->pwd;
+
         }
-        cout<<"No."<<t++<<" Out Is "<<r->data<<endl;
+        cout<<"No."<<t++<<"出局"<<r->data<<endl;
+        cout<<"当前m值为"<<m<<endl;
         //cout<<l.Length(l)<<endl;
     }
-    cout<<"No."<<t++<<" Out Is "<<p->data<<endl;
+    cout<<"No."<<t++<<"出具"<<p->data<<endl;
     return 0;
 }
 

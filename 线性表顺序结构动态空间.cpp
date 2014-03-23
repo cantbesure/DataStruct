@@ -1,15 +1,9 @@
 #include <iostream>
 #include <cstdio>
-#include <algorithm>
 #include <cstring>
-#include <cmath>
-#include <queue>
-#include <stack>
-#include <vector>
 #include <cstdlib>
 #include <string>
 #include <cstring>
-#include <map>
 #define eps 1e-9
 #define init 30;
 #define increse 10;
@@ -54,7 +48,7 @@ emplist::~emplist()
 bool emplist::Init()  //分配初始空间30
 {
     this->emp=(employee *)malloc(30*sizeof(employee));
-    if (!this->emp) exit(OVERFLOW);
+    if (!this->emp) exit(0);
     this->amt=0;
     this->listsize=30;
     return true;
@@ -66,7 +60,7 @@ bool emplist::Creat()
     {
         employee *newemp=NULL;
         newemp=(employee *)realloc(this->emp,(this->listsize+10)*sizeof(employee));
-        if (!newemp) exit(OVERFLOW);
+        if (!newemp) exit(0);
         this->emp=newemp;
         this->listsize+=increse;
     }
@@ -98,7 +92,7 @@ void emplist::Print()
 {
     if (!this->amt)
     {
-        cout<<"No Mem"<<endl;
+        cout<<"没有人"<<endl;
         return ;
     }
     for (int i=1; i<=this->amt; i++)
@@ -111,13 +105,13 @@ int main()
     empl=new emplist();
     while (true)
     {
-        cout<<"************"<<endl;
-        cout<<"*1.InitList*"<<endl;
-        cout<<"*2.CreatMem*"<<endl;
-        cout<<"*3.DeletMem*"<<endl;
-        cout<<"*4.PrintMem*"<<endl;
-        cout<<"*5.Exit    *"<<endl;
-        cout<<"************"<<endl;
+        cout<<"**************"<<endl;
+        cout<<"*1.初始化链表*"<<endl;
+        cout<<"*2.添加人员  *"<<endl;
+        cout<<"*3.删除人员  *"<<endl;
+        cout<<"*4.打印人员  *"<<endl;
+        cout<<"*5.退出      *"<<endl;
+        cout<<"**************"<<endl;
         int opt;
         cin>>opt;
         if (opt==5) break;
@@ -125,14 +119,14 @@ int main()
         {
             if (empl->Init())
             {
-                cout<<"Init Complete!"<<endl;
+                cout<<"初始化成功!"<<endl;
 
                 //cout<<empl->amt<<empl->listsize<<endl;
                 continue;
             }
             else
             {
-                cout<<"Init Error!Again"<<endl;
+                cout<<"初始化失败！"<<endl;
                 continue;
             }
         }
@@ -142,30 +136,30 @@ int main()
 //            cin>>p.name>>p.num>>p.pos;
             if (empl->Creat())
             {
-                cout<<"Creat Complete!"<<endl;
+                cout<<"创建成功!"<<endl;
                 empl->Print();
                 continue;
             }
             else
             {
-                cout<<"Creat Error!Again"<<endl;
+                cout<<"创建失败！"<<endl;
                 continue;
             }
         }
         if (opt==3)
         {
             int n;
-            cout<<"Plz Input Del Num"<<endl;
+            cout<<"请输入删除的人员编号"<<endl;
             cin>>n;
             if (empl->Delete(n))
             {
-                cout<<"Del Complete!"<<endl;
+                cout<<"删除成功!"<<endl;
                 empl->Print();
                 continue;
             }
             else
             {
-                cout<<"Nothing Happened"<<endl;
+                cout<<"什么都没有发生"<<endl;
                 continue;
             }
         }
