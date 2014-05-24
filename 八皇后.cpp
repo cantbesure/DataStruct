@@ -20,7 +20,7 @@ using namespace std;
 typedef long long LL;
 
 int row[8];
-int vis[3][8];
+int vis[2][8];
 int rst=0;
 
 void dfs(int cur)

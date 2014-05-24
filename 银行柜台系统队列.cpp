@@ -265,7 +265,7 @@ int main()
             client_out();
         if (opt==3)
             print_client();
-        else
+        if  (opt==4)
             break;
 
     }
