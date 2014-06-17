@@ -228,7 +228,7 @@ void HeapSort(int n)
 		//去第一个非叶子节点即（n-1）/2
     for (int i=(n-1)>>1; i>=1; i--)
         HeapSort_Part(i,n);
-		
+
 	//将顶端置后，对前n-i个进行堆排，n-2时完成排序
     for (int i=1; i<n-1; i++)
     {
@@ -289,7 +289,8 @@ int main()
 
 /*
 test data in
-
+10
+4 6 3 2 5 8 10 9 7 1
 */
 
 /*

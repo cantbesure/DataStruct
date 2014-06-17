@@ -37,11 +37,11 @@ void creatTree(Tree &rt)
     queue<Tree> q;
     Tree p,s,r;
     rt=NULL;
-    for (scanf("%c%c",&first,&second); second!='#'; rst=scanf("%c%c",&first,&second))
+    for (scanf("%c%c",&first,&second); second!='*';rst=scanf("%c%c",&first,&second))
     {
         p=getNode(second);
         q.push(p);
-        if (first=='#')
+        if (first=='*')
             rt=p;
         else
         {
@@ -67,20 +67,28 @@ void creatTree(Tree &rt)
 
 int depth(Tree rt)
 {
+    int d1,d2;
     if (rt==NULL)
         return 0;
-    int d1,d2;
     d1=depth(rt->first);
     d2=depth(rt->nextsibling);
-    return max(d1,d2)+1;
+    return max(d1+1,d2);
 
 }
 
 int main()
 {
     Tree tree;
+    cout<<"请输入一个树，以“*”开头，以“**”结束,按层次顺序从左至右输入边"<<endl;
     creatTree(tree);
-    cout<<depth(tree)<<endl;
+    cout<<"树的深度为";
+    cout<<depth(tree)-1<<endl;
     return 0;
 }
 
+/*
+TEST CASE
+
+*AABACADAECFDGFHHIIJ**
+
+*/

@@ -126,17 +126,31 @@ int depth(Btree rt)
 int main()
 {
     Btree tree=NULL;
+    cout<<"请按先序输入一个二叉树,“.”为空"<<endl;
     createBtree(&tree);
+    cout<<"先序遍历结果"<<endl;
     PreT(tree);
     cout<<endl;
+    cout<<"中序遍历结果"<<endl;
     InT(tree);
     cout<<endl;
+    cout<<"后序遍历结果"<<endl;
     PostT(tree);
     cout<<endl;
+    cout<<"非递归先序遍历结果"<<endl;
     NoPreT(tree);
     cout<<endl;
+    cout<<"非递归层次遍历结果"<<endl;
     NoLevT(tree);
     cout<<endl;
-    cout<<depth(tree)<<endl;
+    cout<<"树的深度为";
+    cout<<depth(tree)-1<<endl;
     return 0;
 }
+
+/*
+TEST CASE
+
+ABD..E..CF...
+
+*/

@@ -1,14 +1,14 @@
-#include<iostream>
-#include<cstdio>
-#include<algorithm>
-#include<cstring>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<vector>
-#include<cstdlib>
-#include<string>
-#include<cstring>
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <cstring>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <cstdlib>
+#include <string>
+#include <cstring>
 #include <map>
 #include <ctime>
 #define eps 1e-9
@@ -37,7 +37,15 @@ void Key(int val)
         LineTo(val,val+1);
 }
 
-
+bool findele(int val,int Nval)
+{
+    if (hh[Nval%11]==-1)
+        return false;
+    if (hh[Nval%11]==val)
+        return true;
+    else
+        findele(val,Nval+1);
+}
 
 int main()
 {
@@ -54,6 +62,16 @@ int main()
     cout<<"Hash表如下（-1为空）："<<endl;
     for (int i=0;i<11;i++)
         cout<<i<<":"<<hh[i]<<endl;
+    while (1)
+    {
+        cout<<"请输入查找元素"<<endl;
+        int ser;
+        cin>>ser;
+        if (findele(ser,ser))
+            cout<<"找到!"<<endl;
+        else
+            cout<<"未找到!"<<endl;
+    }
 }
 
 /*

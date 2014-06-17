@@ -1,13 +1,13 @@
-#include<iostream>
-#include<cstdio>
-#include<algorithm>
-#include<cstring>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<vector>
-#include<cstdlib>
-#include<string>
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <cstring>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <cstdlib>
+#include <string>
 #include<cstring>
 #include <map>
 #include <ctime>
@@ -25,7 +25,7 @@ typedef struct Bnode
     struct Bnode *right;
 } Bnode,*Btree;
 
-void Build(Btree *rt,int val)
+void Build(Btree *rt,int val)   //构造一棵二叉排序树
 {
     if (*rt==NULL)
     {
@@ -35,54 +35,54 @@ void Build(Btree *rt,int val)
         (*rt)->right=NULL;
         return ;
     }
-    else if (val<=(*rt)->val)
+    else if (val<=(*rt)->val)   //递归构造左子树
         Build(&((*rt)->left),val);
-    else
+    else    //递归构造右子树
         Build(&((*rt)->right),val);
 }
 
-void InT(Btree rt)
+void InT(Btree rt)  //中序遍历二叉排序数
 {
     if (rt==NULL)
         return ;
-    InT(rt->left);
+    InT(rt->left);  //遍历左子树
     cout<<rt->val<<endl;
-    InT(rt->right);
+    InT(rt->right); //遍历右子树
 }
 
-void Delete(Btree *rt,int val)
+void Delete(Btree *rt,int val)  //删除结点
 {
     if (*rt==NULL)
         return ;
-    if ((*rt)->val==val)
+    if ((*rt)->val==val)    //找到该结点，进行删除操作
     {
-        if (!(*rt)->right)
+        if (!(*rt)->right)  //如果右子树为空，直接将左子树代替原结点
         {
             Btree tmp=*rt;
             *rt=((*rt)->left);
             free(tmp);
         }
-        else if (!(*rt)->left)
+        else if (!(*rt)->left)  //如果左子树为空，直接将将右子树代替原结点
         {
             Btree tmp=*rt;
             *rt=((*rt)->right);
             free(tmp);
         }
-        else
+        else        //若左右子树都不为空
         {
             Btree tmp=*rt;
-            Btree rr=(*rt)->left;
-            while (rr->right)
-                rr=rr->right;
-            rr->right=(*rt)->right;
-            *rt=((*rt)->left);
+            Btree rr=(*rt)->right;
+            while (rr->left)   //找待删结点左子树的最右结点
+                rr=rr->left;
+            rr->left=(*rt)->left; //将待删结点的右子树接到其后
+            *rt=((*rt)->right);  //用待删结点的左子树代替原结点
             free(tmp);
         }
         return ;
     }
-    if (val<=(*rt)->val)
+    if (val<=(*rt)->val)    //如果当前值小，遍历左子树
         Delete(&((*rt)->left),val);
-    else
+    else                    //如果当前值大，遍历右子树
         Delete(&((*rt)->right),val);
 }
 
@@ -113,3 +113,8 @@ int main()
     }
     return 0;
 }
+
+/*test data
+9
+7 8 3 2 6 1 5 9 4
+*/

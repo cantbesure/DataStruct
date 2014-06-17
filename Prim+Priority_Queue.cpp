@@ -1,16 +1,16 @@
-#include<iostream>
-#include<cstdio>
-#include<algorithm>
-#include<cstring>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<vector>
-#include<cstdlib>
-#include<string>
-#include<cstring>
-#include<map>
-#include<ctime>
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <cstring>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <cstdlib>
+#include <string>
+#include <cstring>
+#include <map>
+#include <ctime>
 #define eps 1e-9
 #define init 30
 #define increse 10
@@ -44,9 +44,11 @@ int main()
     int w,p,q;
     int rst;
     memset(vis,0,sizeof vis);
+    cout<<"请输入点的个数，边的个数"<<endl;
     cin>>n>>m;
     for (int i=0; i<n; i++)
         link[i][0]=1;
+    cout<<"请输入边的始末节点（<n），边的权"<<endl;
     for (int i=0; i<m; i++)
     {
         cin>>p>>q>>w;
@@ -81,7 +83,24 @@ int main()
         cur=tmp.sto;
         edges.pop();
     }
-    cout<<rst<<endl;
+    cout<<"构造结果"<<rst<<endl;
     return 0;
 
 }
+
+/*test data
+8 9
+0 2 5
+0 1 7
+1 2 4
+1 3 6
+1 5 5
+2 4 8
+4 7 1
+5 7 7
+6 7 3
+*/
+
+/*output
+31
+*/
